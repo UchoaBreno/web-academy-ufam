@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<title>Minha quarta página HTML</title>
+</head>
+
+<body>
+
+<h1>Formulário de Contato</h1>
+
+<p>
+Por favor, preencha o formulário abaixo e clique no botão Enviar Mensagem.
+Agradecemos por seu contato.
+</p>
+
+<form>
+
+<fieldset>
+<legend>Dados Básicos</legend>
+
+<label>Nome</label><br>
+<input type="text"><br><br>
+
+<label>E-mail</label><br>
+<input type="email" placeholder="seunome@dominio.com.br"><br><br>
+
+<label>Website</label><br>
+<input type="url" placeholder="http://"><br>
+
+</fieldset>
+
+<br>
+
+<fieldset>
+<legend>Seu curso no Instituto de Computação</legend>
+
+<input type="radio" name="curso"> Ciência da Computação<br>
+<input type="radio" name="curso"> Sistemas de Informação<br>
+<input type="radio" name="curso"> Engenharia da Computação<br>
+
+</fieldset>
+
+<br>
+
+<fieldset>
+<legend>Assinale as linguagens já usadas por você:</legend>
+
+<input type="checkbox"> Java
+<input type="checkbox"> C
+<input type="checkbox"> C++
+<input type="checkbox"> Perl
+<input type="checkbox"> Python
+<input type="checkbox"> Javascript
+
+</fieldset>
+
+<br>
+
+<fieldset>
+<legend>Dados Complementares</legend>
+
+<label>Cor Favorita</label><br>
+<input type="color"><br><br>
+
+<label>Data de Nascimento</label><br>
+<input type="date"><br><br>
+
+<label>Ano de Entrada em seu Curso do IComp</label><br>
+<input type="number" value="2000"><br><br>
+
+<label>Nota para este site</label><br>
+<input type="range"><br>
+
+</fieldset>
+
+<br>
+
+<label>Área de atuação</label><br>
+
+<select>
+<option>Banco de Dados</option>
+<option>Desenvolvimento Web</option>
+<option>Inteligência Artificial</option>
+<option>Redes</option>
+</select>
+
+<br><br>
+
+<label>Submeta seu currículo vitae</label><br>
+<input type="file">
+
+<br><br>
+
+<label>Digite sua Mensagem</label><br>
+
+<textarea rows="5" cols="40">
+Este é o valor padrão!
+</textarea>
+
+<br><br>
+
+<input type="reset" value="Resetar Dados">
+<input type="submit" value="Enviar Mensagem">
+
+</form>
+
+</body>
+
+</html>
