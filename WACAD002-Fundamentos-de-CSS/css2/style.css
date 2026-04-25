@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* fundo com a imagem */
+.container {
+    height: 100vh;
+    background-image: url("images/img_nebulosa.jpg");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+}
+
+/* caixa do texto */
+.card {
+    width: 150px;
+    padding: 25px;
+
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+
+    border: 4px solid #ff8c42;
+    border-radius: 20px;
+}
+
+/* título */
+.card h1 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+/* texto */
+.card p {
+    font-size: 14px;
+    line-height: 1.5;
+}
