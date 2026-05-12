@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas</title>
+
+<style>
+
+  #lista-pendentes, #lista-concluidas {
+    border: 1px solid black;
+    padding: 25px;
+    width: 150px;
+  }
+
+</style>
+    
+  </head>
+
+  <body>
+
+    <div id="organizador">
+
+      <h3>Tarefas Pendentes:</h3>
+
+      <ul id="lista-pendentes">
+        <li id="tarefa-carro">Lavar o carro</li>
+        <li id="tarefa-js">Estudar JavaScript</li>
+        <li id="tarefa-livro">Ler livro</li>
+        <li id="tarefa-roupas">Dobrar as roupas</li>
+      </ul>
+
+      <h3>Tarefas Concluídas:</h3>
+
+      <ul id="lista-concluidas">
+        <li>Fazer compras</li>
+      </ul>
+
+    </div>
+
+    <script>
+
+      // 1. Remove "Lavar o carro"
+      const tarefaCarro = document.querySelector("#tarefa-carro");
+      tarefaCarro.remove();
+
+      // 2. Move "Estudar JavaScript" para concluídas
+      const tarefaJS = document.querySelector("#tarefa-js");
+      const listaConcluidas = document.querySelector("#lista-concluidas");
+
+      listaConcluidas.appendChild(tarefaJS);
+
+      // 3. Cria nova tarefa "Fazer exercícios"
+      const novaTarefa = document.createElement("li");
+
+      novaTarefa.textContent = "Fazer exercícios";
+
+      const listaPendentes = document.querySelector("#lista-pendentes");
+
+      listaPendentes.appendChild(novaTarefa);
+
+      // 4. Adiciona [URGENTE] em "Ler livro"
+      const tarefaLivro = document.querySelector("#tarefa-livro");
+
+      tarefaLivro.textContent = "[URGENTE] " + tarefaLivro.textContent;
+
+    </script>
+
+  </body>
+</html>
