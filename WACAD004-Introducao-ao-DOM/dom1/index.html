@@ -12,7 +12,6 @@
 
     <h2>Fechamento do Pedido</h2>
 
-    <!-- Valores que o JS precisa ler -->
     <label>Subtotal dos Produtos (R$):</label>
     <input type="number" id="valor-subtotal" value="150.00">
     <br><br>
@@ -21,7 +20,7 @@
     <input type="number" id="valor-frete" value="25.50">
     <br><br>
 
-    <!-- Lista para ser contada -->
+
     <h3>Itens na sua caixa:</h3>
 
     <ul id="lista-produtos">
@@ -34,23 +33,22 @@
 
   <script>
 
-    // Seleciona os produtos
+
     const produtos = document.querySelectorAll(".produto-comprado");
 
-    // Quantidade de itens
+
     const quantidade = produtos.length;
 
-    // Captura subtotal
+
     const subtotal = parseFloat(
       document.querySelector("#valor-subtotal").value
     );
 
-    // Captura frete
+
     const frete = parseFloat(
       document.querySelector("#valor-frete").value
     );
 
-    // Soma subtotal + frete
     const total = subtotal + frete;
 
     // Exibe no console
