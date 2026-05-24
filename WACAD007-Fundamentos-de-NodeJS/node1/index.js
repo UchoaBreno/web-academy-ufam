@@ -1,53 +1,61 @@
+require('dotenv').config();
+
 const http = require('http');
 const fs = require('fs');
-const path = require('path');
 
-const directory = process.argv[2];
+const diretorio = process.argv[2];
 
-if (!directory) {
-  console.log('Uso: node index.js <diretorio>');
-  process.exit(1);
+if (!diretorio) {
+    console.log('Uso: node index.js <diretorio>');
+    process.exit();
 }
 
 const server = http.createServer((req, res) => {
 
-  fs.readdir(directory, (err, files) => {
+    fs.readdir(diretorio, (erro, itens) => {
 
-    if (err) {
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
-      res.end('Erro ao ler diretório');
-      return;
-    }
+        if (erro) {
+            res.writeHead(500, {
+                'Content-Type': 'text/plain'
+            });
 
-    let html = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="UTF-8">
-        <title>Arquivos</title>
-      </head>
-      <body>
-    `;
+            res.end('Erro ao ler diretório');
+            return;
+        }
 
-    files.forEach(file => {
-      html += `<div>${file}</div>`;
+        let html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Arquivos</title>
+        </head>
+        <body>
+            <h1>Arquivos e Subdiretórios</h1>
+            <ul>
+        `;
+
+        itens.forEach(item => {
+            html += `<li>${item}</li>`;
+        });
+
+        html += `
+            </ul>
+        </body>
+        </html>
+        `;
+
+        res.writeHead(200, {
+            'Content-Type': 'text/html; charset=utf-8'
+        });
+
+        res.end(html);
     });
-
-    html += `
-      </body>
-      </html>
-    `;
-
-    res.writeHead(200, {
-      'Content-Type': 'text/html; charset=utf-8'
-    });
-
-    res.end(html);
-
-  });
 
 });
 
-server.listen(3333, () => {
-  console.log('Servidor rodando em http://localhost:3333');
+const PORT = process.env.PORT || 3333;
+
+server.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
