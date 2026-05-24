@@ -9,27 +9,35 @@ dotenv.config({
 const http = require("http");
 const fs = require("fs");
 
+const createLink = require("./createLink");
+
 const diretorio = process.argv[2];
 
 const server = http.createServer(function (req, res) {
 
-  fs.readdir(diretorio, function (err, arquivos) {
+  const arquivo = req.url.substring(1);
 
-    if (err) {
-      res.writeHead(500, {
-        "Content-Type": "text/html; charset=utf-8"
-      });
+  if (arquivo) {
 
-      res.end("Erro ao ler diretório");
-      return;
-    }
+    fs.readFile(diretorio + "/" + arquivo, "utf8", function (err, conteudo) {
 
-    res.writeHead(200, {
-      "Content-Type": "text/html; charset=utf-8"
+      if (err) {
+        res.end("Arquivo não encontrado");
+        return;
+      }
+
+      res.end(
+        `<a href="/">Voltar</a><br><br>${conteudo}`
+      );
     });
 
+    return;
+  }
+
+  fs.readdir(diretorio, function (err, arquivos) {
+
     arquivos.forEach(function (arquivo) {
-      res.write(arquivo + "<br>");
+      res.write(createLink(arquivo));
     });
 
     res.end();
@@ -37,8 +45,4 @@ const server = http.createServer(function (req, res) {
 
 });
 
-const PORT = process.env.PORT || 3333;
-
-server.listen(PORT, function () {
-  console.log("Servidor rodando na porta " + PORT);
-});
+server.listen(process.env.PORT);
