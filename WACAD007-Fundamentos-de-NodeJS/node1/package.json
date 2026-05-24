@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js ./public",
-    "start:prod": "node index.js ./public"
-  },
+  "start": "set NODE_ENV=development&& nodemon index.js ./public",
+  "start:prod": "set NODE_ENV=production&& node index.js ./public"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
