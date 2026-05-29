@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Lembretes</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Lista de Lembretes</h1>
+
+        <input
+            type="text"
+            id="titulo"
+            placeholder="Título do lembrete"
+        >
+
+        <input
+            type="datetime-local"
+            id="dataLimite"
+        >
+
+        <textarea
+            id="descricao"
+            placeholder="Descrição"
+        ></textarea>
+
+        <button id="btnAdicionar">
+            Adicionar
+        </button>
+
+        <ul id="listaLembretes"></ul>
+
+    </div>
+
+
+  <!-- Modal de edição -->
+<div id="modalEditar" class="modal">
+    <div class="modal-conteudo">
+
+        <h3>Editar Lembrete</h3>
+
+        <input
+            type="text"
+            id="novoTitulo"
+            placeholder="Título"
+        >
+
+        <input
+            type="datetime-local"
+            id="novaDataLimite"
+        >
+
+        <textarea
+            id="novaDescricao"
+            placeholder="Descrição"
+        ></textarea>
+
+        <br>
+
+        <button id="btnSalvar">
+            Salvar
+        </button>
+
+        <button id="btnCancelar">
+            Cancelar
+        </button>
+
+    </div>
+</div>
+
+<!-- Modal de exclusão -->
+<div id="modalExcluir" class="modal">
+    <div class="modal-conteudo">
+
+        <h3>Excluir Lembrete</h3>
+
+        <p>Deseja realmente excluir este lembrete?</p>
+
+        <button id="btnConfirmarExcluir" class="btn-vermelho">
+            Sim
+        </button>
+
+        <button id="btnCancelarExcluir" class="btn-azul">
+            Não
+        </button>
+
+    </div>
+</div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
