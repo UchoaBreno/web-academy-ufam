@@ -5,63 +5,108 @@
     <meta charset="UTF-8">
     <title>Express MVC</title>
 
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    <link rel="stylesheet" href="/css/style.css"
+    
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    />
+    
+<head>
+    <meta charset="UTF-8">
+
+    <title>Express MVC</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
     <style>
-
         body {
-
             font-family: Arial, sans-serif;
-
             margin: 0;
-
             padding: 0;
-
-        }
-
-        header {
-
-            background: #2563eb;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 20px;
-
         }
 
         main {
-
             padding: 30px;
-
         }
 
         footer {
-
             background: #e5e7eb;
-
             text-align: center;
-
             padding: 20px;
-
             margin-top: 40px;
-
         }
-
     </style>
-
 </head>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 <body>
 
-    <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">My App</a>
 
-        <h1>
-            Aplicação Express + HBS
-        </h1>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    </header>
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a
+                        class="nav-link active"
+                        href="/hb1"
+                    >
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/hb2"
+                    >
+                        HB2
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/hb3"
+                    >
+                        HB3
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/hb4"
+                    >
+                        HB4
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <main>
 
