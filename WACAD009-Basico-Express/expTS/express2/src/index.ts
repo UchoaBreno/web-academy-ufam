@@ -10,17 +10,18 @@ validateEnv();
 
 const app = express();
 
+app.use(express.static("src/public"));
+
 app.engine(
     "hbs",
     engine({
-        extname: ".hbs"
+        extname: ".hbs",
+        defaultLayout: "main",
+        layoutsDir: path.join(__dirname, "views", "layouts")
     })
 );
 
-app.set(
-    "view engine",
-    "hbs"
-);
+app.set("view engine", "hbs");
 
 app.set(
     "views",
@@ -31,13 +32,10 @@ app.use(logger);
 
 app.use(routes);
 
-const PORT =
-    Number(process.env.PORT);
+const PORT = Number(process.env.PORT);
 
 app.listen(PORT, () => {
-
     console.log(
         `Express app iniciada na porta ${PORT}.`
     );
-
 });

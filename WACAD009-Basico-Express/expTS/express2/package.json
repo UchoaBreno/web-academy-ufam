@@ -7,7 +7,8 @@
         "start": "npm run build && node build/index.js",
         "start:prod": "node build/index.js",
         "lint": "eslint src",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "scss": "sass src/public/scss:src/public/css --watch"
     },
     "dependencies": {
         "dotenv": "^17.4.2",
@@ -23,6 +24,7 @@
         "eslint-config-prettier": "^10.1.8",
         "globals": "^17.6.0",
         "prettier": "^3.8.3",
+        "sass": "^1.100.0",
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.61.0"
     }
