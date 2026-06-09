@@ -13,8 +13,7 @@ const app = express();
 app.engine(
     "hbs",
     engine({
-        extname: ".hbs",
-        defaultLayout: false
+        extname: ".hbs"
     })
 );
 
