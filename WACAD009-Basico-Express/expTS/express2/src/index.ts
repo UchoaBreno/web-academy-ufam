@@ -6,22 +6,19 @@ from "./utils/validateEnv";
 import { logger }
 from "./middleware/logger";
 
+import routes
+from "./routes";
+
 validateEnv();
 
 const app = express();
 
 app.use(logger);
 
+app.use(routes);
+
 const PORT =
     Number(process.env.PORT);
-
-app.get("/", (req, res) => {
-
-    res.send(
-        "<h1>Hello World!</h1>"
-    );
-
-});
 
 app.listen(PORT, () => {
 
