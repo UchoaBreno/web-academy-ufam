@@ -1,158 +1,29 @@
 import { Router } from "express";
-import { LoremIpsum } from "lorem-ipsum";
+
+import {
+    home,
+    lorem,
+    hb1,
+    hb2,
+    hb3,
+    hb4
+} from "../controllers/mainController";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", home);
 
-    res.send("<h1>Hello World!</h1>");
+router.get(
+    "/lorem/:qtd",
+    lorem
+);
 
-});
+router.get("/hb1", hb1);
 
-router.get("/lorem/:qtd", (req, res) => {
+router.get("/hb2", hb2);
 
-    const quantidade = Number(
-        req.params.qtd
-    );
+router.get("/hb3", hb3);
 
-    if (
-        isNaN(quantidade) ||
-        quantidade <= 0
-    ) {
-
-        res.status(400).send(
-            "Informe uma quantidade válida."
-        );
-
-        return;
-    }
-
-    const lorem = new LoremIpsum();
-
-    const texto =
-        lorem.generateParagraphs(
-            quantidade
-        );
-
-    const paragrafos = texto
-        .split("\n")
-        .map(
-            paragrafo =>
-                `<p>${paragrafo}</p>`
-        )
-        .join("");
-
-    res.send(`
-        <html>
-            <head>
-                <title>Lorem Ipsum</title>
-            </head>
-
-            <body style="
-                max-width: 800px;
-                margin: 30px auto;
-                font-family: Arial;
-            ">
-                ${paragrafos}
-            </body>
-        </html>
-    `);
-
-});
-
-router.get("/hb1", (req, res) => {
-
-    res.render(
-        "hb1"
-    );
-
-});
-
-router.get("/hb2", (req, res) => {
-
-    res.render(
-        "hb2",
-        {
-            titulo:
-                "Express Framework"
-        }
-    );
-
-});
-
-router.get("/hb3", (req, res) => {
-
-    const professores = [
-        "David Fernandes - sala 1238",
-        "Horácio Fernandes - sala 1237",
-        "Edleno Moura - sala 1236",
-        "Elaine Harada - sala 1231"
-    ];
-
-    res.render(
-        "hb3",
-        {
-            professores
-        }
-    );
-
-});
-
-router.get("/hb4", (req, res) => {
-
-    const tecnologias = [
-
-        {
-            name: "Express",
-            type: "Framework",
-            poweredByNodejs: true
-        },
-
-        {
-            name: "Laravel",
-            type: "Framework",
-            poweredByNodejs: false
-        },
-
-        {
-            name: "React",
-            type: "Library",
-            poweredByNodejs: true
-        },
-
-        {
-            name: "Handlebars",
-            type: "Engine View",
-            poweredByNodejs: true
-        },
-
-        {
-            name: "Django",
-            type: "Framework",
-            poweredByNodejs: false
-        },
-
-        {
-            name: "Docker",
-            type: "Virtualization",
-            poweredByNodejs: false
-        },
-
-        {
-            name: "Sequelize",
-            type: "ORM tool",
-            poweredByNodejs: true
-        }
-
-    ];
-
-    res.render(
-        "hb4",
-        {
-            tecnologias
-        }
-    );
-
-});
+router.get("/hb4", hb4);
 
 export default router;
