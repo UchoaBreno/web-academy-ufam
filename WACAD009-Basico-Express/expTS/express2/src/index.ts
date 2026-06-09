@@ -1,17 +1,32 @@
 import express from "express";
+import { engine } from "express-handlebars";
+import path from "path";
 
-import { validateEnv }
-from "./utils/validateEnv";
-
-import { logger }
-from "./middleware/logger";
-
-import routes
-from "./routes";
+import { validateEnv } from "./utils/validateEnv";
+import { logger } from "./middleware/logger";
+import routes from "./routes";
 
 validateEnv();
 
 const app = express();
+
+app.engine(
+    "hbs",
+    engine({
+        extname: ".hbs",
+        defaultLayout: false
+    })
+);
+
+app.set(
+    "view engine",
+    "hbs"
+);
+
+app.set(
+    "views",
+    path.join(__dirname, "views")
+);
 
 app.use(logger);
 

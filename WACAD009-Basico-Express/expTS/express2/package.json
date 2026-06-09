@@ -12,6 +12,7 @@
     "dependencies": {
         "dotenv": "^17.4.2",
         "express": "^5.2.1",
+        "express-handlebars": "^8.0.3",
         "lorem-ipsum": "^3.0.0"
     },
     "devDependencies": {
