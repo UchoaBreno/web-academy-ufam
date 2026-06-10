@@ -9,6 +9,8 @@ import {
     hb4
 } from "../controllers/mainController";
 
+import produtoRoutes from "./produtoRoutes";
+
 const router = Router();
 
 router.get("/", home);
@@ -25,5 +27,10 @@ router.get("/hb2", hb2);
 router.get("/hb3", hb3);
 
 router.get("/hb4", hb4);
+
+router.use(
+    "/produtos",
+    produtoRoutes
+);
 
 export default router;

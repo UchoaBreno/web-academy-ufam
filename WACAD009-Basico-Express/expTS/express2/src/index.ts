@@ -17,7 +17,12 @@ app.engine(
     engine({
         extname: ".hbs",
         defaultLayout: "main",
-        layoutsDir: path.join(__dirname, "views", "layouts")
+        layoutsDir: path.join(
+            process.cwd(),
+            "src",
+            "views",
+            "layouts"
+        )
     })
 );
 
@@ -25,10 +30,12 @@ app.set("view engine", "hbs");
 
 app.set(
     "views",
-    path.join(__dirname, "views")
+    path.join(process.cwd(), "src", "views")
 );
 
 app.use(logger);
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 

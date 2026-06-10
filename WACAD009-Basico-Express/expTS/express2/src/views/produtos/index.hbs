@@ -1,0 +1,53 @@
+<h2>Listagem de Produtos</h2>
+
+<p>
+    <a
+        href="/produtos/novo"
+        class="btn btn-primary"
+    >
+        Novo Produto
+    </a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each produtos}}
+            <tr>
+                <td>{{this.nome}}</td>
+
+                <td>{{this.preco}}</td>
+
+                <td>
+                    <a
+                        href="/produtos/{{this.id}}"
+                        class="btn btn-info btn-sm"
+                    >
+                        Ver
+                    </a>
+
+                    <a
+                        href="/produtos/{{this.id}}/editar"
+                        class="btn btn-warning btn-sm"
+                    >
+                        Editar
+                    </a>
+
+                    <a
+                        href="/produtos/{{this.id}}/excluir"
+                        class="btn btn-danger btn-sm"
+                    >
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

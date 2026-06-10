@@ -1,0 +1,56 @@
+<h2>
+    {{#if produto}}
+        Editar Produto
+    {{else}}
+        Novo Produto
+    {{/if}}
+</h2>
+
+<form
+    method="post"
+    action="{{#if produto}}/produtos/{{produto.id}}/editar{{else}}/produtos{{/if}}"
+>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Nome
+        </label>
+
+        <input
+            type="text"
+            name="nome"
+            class="form-control"
+            value="{{produto.nome}}"
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Preço
+        </label>
+
+        <input
+            type="number"
+            name="preco"
+            class="form-control"
+            value="{{produto.preco}}"
+            required
+        >
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-success"
+    >
+        Salvar
+    </button>
+
+    <a
+        href="/produtos"
+        class="btn btn-secondary"
+    >
+        Voltar
+    </a>
+
+</form>
