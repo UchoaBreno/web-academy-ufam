@@ -1,5 +1,6 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
 const bcrypt = require("bcrypt");
 
 const prisma = require("./prisma");
@@ -7,13 +8,33 @@ const prisma = require("./prisma");
 const isAuth = require("./middlewares/isAuth");
 const isAdmin = require("./middlewares/isAdmin");
 
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
+
+console.log(JSON.stringify(swaggerSpec, null, 2));
+
+
+
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(session({
+    secret: "webacademy",
+    resave: false,
+    saveUninitialized: true
+}));
+
 app.use("/products", require("./routes/product.routes"));
 app.use("/v1/usuario", require("./resources/usuario/user.routes"));
+app.use("/compra", require("./resources/compra/compra.routes"));
+
+app.use(
+    "/api",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec)
+);
 
 /* ===========================
    LOGIN
