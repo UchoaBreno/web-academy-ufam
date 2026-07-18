@@ -1,4 +1,5 @@
 const prisma = require("../prisma");
+const productSchema = require("../validations/product.validation");
 
 exports.index = async (req, res) => {
     const products = await prisma.product.findMany();
@@ -20,6 +21,14 @@ exports.read = async (req, res) => {
 
 exports.create = async (req, res) => {
 
+    const { error } = productSchema.validate(req.body);
+
+    if (error) {
+        return res.status(422).json({
+            error: error.details.map(err => err.message)
+        });
+    }
+
     const { name, price, description } = req.body;
 
     const product = await prisma.product.create({
@@ -35,11 +44,21 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
 
+    const { error } = productSchema.validate(req.body);
+
+    if (error) {
+        return res.status(422).json({
+            error: error.details.map(err => err.message)
+        });
+    }
+
     const { id } = req.params;
     const { name, price, description } = req.body;
 
     const product = await prisma.product.update({
-        where: { id: Number(id) },
+        where: {
+            id: Number(id)
+        },
         data: {
             name,
             price,
