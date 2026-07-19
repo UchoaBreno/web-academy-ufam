@@ -1,0 +1,31 @@
+{
+    "name": "expts",
+    "version": "1.0.0",
+    "main": "build/index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "npm run build && node build/index.js",
+        "start:prod": "node build/index.js",
+        "lint": "eslint src",
+        "format": "prettier --write .",
+        "scss": "sass src/public/scss:src/public/css --watch"
+    },
+    "dependencies": {
+        "dotenv": "^17.4.2",
+        "express": "^5.2.1",
+        "express-handlebars": "^8.0.3",
+        "lorem-ipsum": "^3.0.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@types/express": "^5.0.3",
+        "@types/node": "^25.9.2",
+        "eslint": "^10.4.1",
+        "eslint-config-prettier": "^10.1.8",
+        "globals": "^17.6.0",
+        "prettier": "^3.8.3",
+        "sass": "^1.100.0",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.61.0"
+    }
+}

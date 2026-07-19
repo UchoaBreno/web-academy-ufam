@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+}
+
+h1 {
+  position: absolute;
+  margin: 0;
+  color: white;
+  left: 10px;
+  top: 10px;
+}
+
+canvas {
+  display: block;
+}

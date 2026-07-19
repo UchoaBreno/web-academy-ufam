@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categoria {
+  id_categoria Int            @id @default(autoincrement())
+  nome         String         @db.VarChar(100)
+  subcategoria subcategoria[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model cliente {
+  id_cliente      Int        @id @default(autoincrement())
+  nome            String     @db.VarChar(100)
+  cpf             String     @db.VarChar(14)
+  celular         String?    @db.VarChar(20)
+  email           String     @db.VarChar(100)
+  data_nascimento DateTime   @db.Date
+  compra          compra[]
+  endereco        endereco[]
+}
+
+model compra {
+  id_compra            Int           @id @default(autoincrement())
+  data_hora            DateTime      @db.DateTime(0)
+  desconto             Decimal?      @db.Decimal(10, 2)
+  forma_pagamento      String        @db.VarChar(50)
+  total                Decimal       @db.Decimal(10, 2)
+  CLIENTE_id_cliente   Int
+  ENDERECO_id_endereco Int
+  cliente              cliente       @relation(fields: [CLIENTE_id_cliente], references: [id_cliente], onDelete: NoAction, onUpdate: NoAction, map: "fk_COMPRA_CLIENTE1")
+  endereco             endereco      @relation(fields: [ENDERECO_id_endereco], references: [id_endereco], onDelete: NoAction, onUpdate: NoAction, map: "fk_COMPRA_ENDERECO1")
+  item_compra          item_compra[] @ignore
+
+  @@index([CLIENTE_id_cliente], map: "fk_COMPRA_CLIENTE1_idx")
+  @@index([ENDERECO_id_endereco], map: "fk_COMPRA_ENDERECO1_idx")
+}
+
+model endereco {
+  id_endereco        Int      @id @default(autoincrement())
+  rua                String   @db.VarChar(100)
+  numero             String   @db.VarChar(10)
+  bairro             String   @db.VarChar(100)
+  cidade             String   @db.VarChar(100)
+  estado             String   @db.VarChar(2)
+  cep                String   @db.VarChar(10)
+  CLIENTE_id_cliente Int
+  compra             compra[]
+  cliente            cliente  @relation(fields: [CLIENTE_id_cliente], references: [id_cliente], onDelete: NoAction, onUpdate: NoAction, map: "fk_ENDERECO_CLIENTE")
+
+  @@index([CLIENTE_id_cliente], map: "fk_ENDERECO_CLIENTE_idx")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model item_compra {
+  quantidade         Int
+  preco_unitario     Decimal @db.Decimal(10, 2)
+  COMPRA_id_compra   Int
+  PRODUTO_id_produto Int
+  id_compra          Int?
+  id_produto         Int?
+  compra             compra  @relation(fields: [COMPRA_id_compra], references: [id_compra], onDelete: NoAction, onUpdate: NoAction, map: "fk_ITEM_COMPRA_COMPRA1")
+  produto            produto @relation(fields: [PRODUTO_id_produto], references: [id_produto], onDelete: NoAction, onUpdate: NoAction, map: "fk_ITEM_COMPRA_PRODUTO1")
+
+  @@index([COMPRA_id_compra], map: "fk_ITEM_COMPRA_COMPRA1_idx")
+  @@index([PRODUTO_id_produto], map: "fk_ITEM_COMPRA_PRODUTO1_idx")
+  @@ignore
+}
+
+model numero_serie {
+  id_serie           Int     @id @default(autoincrement())
+  nuumero_serie      String  @db.VarChar(100)
+  PRODUTO_id_produto Int
+  produto            produto @relation(fields: [PRODUTO_id_produto], references: [id_produto], onDelete: NoAction, onUpdate: NoAction, map: "fk_NUMERO_SERIE_PRODUTO1")
+
+  @@index([PRODUTO_id_produto], map: "fk_NUMERO_SERIE_PRODUTO1_idx")
+}
+
+model produto {
+  id_produto                   Int            @id @default(autoincrement())
+  modelo                       String         @db.VarChar(100)
+  fabricante                   String         @db.VarChar(100)
+  preco_base                   Decimal        @db.Decimal(10, 2)
+  quantidade_disponivel        Int
+  SUBCATEGORIA_id_subcategoria Int
+  id_subcategoria              Int?
+  item_compra                  item_compra[]  @ignore
+  numero_serie                 numero_serie[]
+  subcategoria                 subcategoria   @relation(fields: [SUBCATEGORIA_id_subcategoria], references: [id_subcategoria], onDelete: NoAction, onUpdate: NoAction, map: "fk_PRODUTO_SUBCATEGORIA1")
+
+  @@index([SUBCATEGORIA_id_subcategoria], map: "fk_PRODUTO_SUBCATEGORIA1_idx")
+}
+
+model subcategoria {
+  id_subcategoria        Int       @id @default(autoincrement())
+  nome                   String    @db.VarChar(100)
+  CATEGORIA_id_categoria Int
+  produto                produto[]
+  categoria              categoria @relation(fields: [CATEGORIA_id_categoria], references: [id_categoria], onDelete: NoAction, onUpdate: NoAction, map: "fk_SUBCATEGORIA_CATEGORIA1")
+
+  @@index([CATEGORIA_id_categoria], map: "fk_SUBCATEGORIA_CATEGORIA1_idx")
+}

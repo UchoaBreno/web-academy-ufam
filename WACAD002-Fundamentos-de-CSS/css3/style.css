@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+}
+
+/* azul (alto) */
+.blue {
+    width: 200px;
+    height: 400px;
+    background: blue;
+}
+
+/* amarelo */
+.yellow {
+    width: 200px;
+    height: 300px;
+    background: yellow;
+}
+
+/* vermelho */
+.red {
+    width: 200px;
+    height: 300px;
+    background: red;
+}
+
+/* verde */
+.green {
+    width: 400px;
+    height: 100px;
+    background: green;
+    margin-top: -100px;
+    margin-left: 200px;
+}
+@media (max-width: 600px) {
+
+    .container {
+        flex-direction: column;
+        width: 200px;
+    }
+
+    .blue {
+        width: 200px;
+        height: 200px;
+    }
+
+    .yellow {
+        width: 200px;
+        height: 200px;
+    }
+
+    .red {
+        width: 200px;
+        height: 200px;
+    }
+
+    .green {
+        width: 400px;
+        height: 100px;
+
+        margin: 0; /* remove ajustes */
+    }
+}

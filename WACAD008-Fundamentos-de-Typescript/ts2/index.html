@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Laboratório 02</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Turma de Educação Física</h1>
+
+    <h2>Cadastrar Aluno</h2>
+
+    <input type="text" id="nome" placeholder="Nome">
+
+    <input type="number" id="idade" placeholder="Idade">
+
+    <input type="number" id="altura" placeholder="Altura">
+
+    <input type="number" id="peso" placeholder="Peso">
+
+    <button onclick="adicionarAluno()">
+        Adicionar
+    </button>
+
+    <h2>Estatísticas</h2>
+
+    <p id="qtdAlunos">Quantidade: 0</p>
+    <p id="mediaIdades">Média de Idades: 0</p>
+    <p id="mediaAlturas">Média de Alturas: 0</p>
+    <p id="mediaPesos">Média de Pesos: 0</p>
+
+    <h2>Alunos</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaAlunos">
+
+        </tbody>
+    </table>
+    <button class="btn-gerar" onclick="gerarAlunos()">
+    Gerar Alunos Aleatórios
+</button>
+
+<div id="modalExcluir" class="modal">
+    <div class="modal-content">
+
+        <h3>Confirmar Exclusão</h3>
+
+        <p>
+            Deseja realmente excluir este aluno?
+        </p>
+
+        <div class="modal-botoes">
+            <button id="btnConfirmarExcluir">
+                Sim, Excluir
+            </button>
+
+            <button
+                class="btn-cancelar"
+                onclick="fecharModal()"
+            >
+                Cancelar
+            </button>
+        </div>
+
+    </div>
+</div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório 03</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>TechStore</h1>
+        <h2>Laboratório 03</h2>
+    </header>
+
+    <main>
+
+        <section class="produtos">
+
+            <h2>Produtos</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>TV Samsung</h3>
+
+                    <p>Resolução: 4K</p>
+                    <p>Tamanho: 55"</p>
+                    <p>Fabricante: Samsung</p>
+
+                    <span class="preco">
+                        R$ 3.500,00
+                    </span>
+
+                    <button onclick="adicionarTV()">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>iPhone 15</h3>
+
+                    <p>Memória: 256GB</p>
+                    <p>Fabricante: Apple</p>
+
+                    <span class="preco">
+                        R$ 5.000,00
+                    </span>
+
+                    <button onclick="adicionarCelular()">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>Caloi Elite</h3>
+
+                    <p>Aro: 29</p>
+                    <p>Fabricante: Caloi</p>
+
+                    <span class="preco">
+                        R$ 800,00
+                    </span>
+
+                    <button onclick="adicionarBicicleta()">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <aside class="carrinho">
+
+            <h2>Seu Carrinho</h2>
+
+            <div id="listaCarrinho">
+
+            </div>
+
+            <div class="estatisticas">
+
+                <p id="quantidadeProdutos">
+                    Quantidade: 0
+                </p>
+
+                <p id="valorTotal">
+                    Total: R$ 0,00
+                </p>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

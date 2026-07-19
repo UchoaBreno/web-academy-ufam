@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font: 1.2em/1.4 Arial, Helvetica, sans-serif;
+}
+
+body {
+  padding: 0 0 1em;
+}
+
+/* HEADER */
+header {
+  background-color: #242424;
+  color: #fff;
+  border: 5px solid #000;
+}
+
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 0.5em 1em;
+  border-top: 1px solid #999;
+}
+
+header .title {
+  font-size: 150%;
+  font-style: italic;
+  font-weight: bold;
+  padding: 1em;
+}
+
+/* MAIN */
+main {
+  padding: 0 1em;
+}
+
+/* CARDS */
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards li {
+  border: 5px solid #000;
+  margin-bottom: 1em;
+}
+
+.cards h2 {
+  background-color: #333;
+  color: #fff;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+.cards .inner {
+  padding: 0.5em 1em;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background-color: #333;
+  border: 5px solid #000;
+  padding: 0.5em 1em;
+  color: #fff;
+  height: 750px;
+}
+
+/* ================================= */
+/* 🔥 RESPONSIVO (DESKTOP) */
+/* ================================= */
+
+@media (min-width: 768px) {
+
+  /* layout principal */
+  main {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* conteúdo + sidebar */
+    gap: 20px;
+  }
+
+  article {
+    grid-column: 1;
+  }
+
+  .sidebar {
+    grid-column: 2;
+    align-self: start;
+  }
+
+  /* cards em grade */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 por linha */
+    gap: 20px;
+  }
+
+  .cards li {
+    margin: 0;
+  }
+
+  /* header horizontal */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header ul {
+    display: flex;
+  }
+
+  header a {
+    border: none;
+  }
+}
