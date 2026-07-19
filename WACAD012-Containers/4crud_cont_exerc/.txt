@@ -1,0 +1,11 @@
+docker network create crud-network
+
+docker build -f Dockerfile.back -t backend .
+
+docker build -f Dockerfile.front -t frontend .
+
+docker run -d --name back --network crud-network -p 4000:4000 backend
+
+docker run -d --name front --network crud-network -p 3000:3000 frontend
+
+docker logs -f back
